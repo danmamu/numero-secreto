@@ -1,7 +1,7 @@
 
 let numeroMaximo=10;
 let intentos=1;
-let cantidadMaximaDeIntentos=2;
+let cantidadMaximaDeIntentos=4;
 let numerosTipados=[];
 
 //acorta los pasos para repetir el titulo y subtitulo.
