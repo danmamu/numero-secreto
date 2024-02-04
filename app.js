@@ -21,7 +21,11 @@ function crearNumeroSecreto(){
     numeroSecreto = Math.floor(Math.random() * numeroMaximo) + 1;
     console.log('N° Secreto:', numeroSecreto);
     console.log('N° intentos juego nuevo:', intentos);
-    console.log(numerosTipados.sort(function(a, b){ return a - b }));
+    numerosTipados.sort(function(a, b){ return a - b });
+            
+        document.getElementById('numerosTipados').textContent=`Numeros jugados: ${numerosTipados}`;
+
+    
 
     let numeroGenerado = numeroSecreto;
 
@@ -37,6 +41,7 @@ function crearNumeroSecreto(){
     }
 }
 
+
 function limpiarCaja(){
     document.getElementById('valorUsuario').value = '';
 }
@@ -51,6 +56,7 @@ function verificarIntento(){
 
     if (numeroDeUsuario === numeroSecreto && intentos < cantidadMaximaDeIntentos) {
         asignarTextoAElementos('subtitulo', `ES CORRECTO!.. acertaste en ${intentos} ${(intentos === 1) ? 'vez' : 'veces'}`);
+
         document.getElementById('reiniciar').removeAttribute('disabled');
         document.getElementById('verificado').setAttribute('disabled', true);
     } else {
@@ -59,6 +65,8 @@ function verificarIntento(){
         } if (numeroDeUsuario < numeroSecreto && intentos < cantidadMaximaDeIntentos){
             asignarTextoAElementos('subtitulo', `ERROR! el numero secreto es Mayor`);
         } if(intentos==cantidadMaximaDeIntentos) {
+
+            numerosTipados.pop();
             asignarTextoAElementos('subtitulo', `Acabaste el numero maximo de intentos`);
             console.log(intentos);
             document.getElementById('reiniciar').removeAttribute('disabled');
@@ -69,6 +77,8 @@ function verificarIntento(){
     }
     limpiarCaja();
 }
+
+
 
 function reiniciarJuego(){
     intentos = 1;
